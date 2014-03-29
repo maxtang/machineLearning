@@ -49,7 +49,7 @@ pause;
 % Scale features and set them to zero mean
 fprintf('Normalizing Features ...\n');
 
-[X mu sigma] = featureNormalize(X);
+[Xn mu sigma] = featureNormalize(X);
 
 % Add intercept term to X
 X = [ones(m, 1) X];
@@ -82,7 +82,8 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.01;
+alpha = 0.0000001;
+%alpha = 0.001;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
@@ -104,6 +105,8 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
+% without normalizing
+%price = [1 1650 3] * theta
 price = (([1 1650 3] - [0 mu])./[1 sigma]) * theta
 
 
