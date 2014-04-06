@@ -34,7 +34,6 @@ fprintf(['Plotting data with + indicating (y = 1) examples and o ' ...
          'indicating (y = 0) examples.\n']);
 
 plotData(X, y);
-
 % Put some labels 
 hold on;
 % Labels and Legend

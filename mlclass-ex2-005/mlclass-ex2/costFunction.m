@@ -20,8 +20,10 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
-
-
+% compute hypothesis function
+h=sigmoid(X*theta);
+grad= (X'*(h-y))/m;
+J = sum(-y.*log(h) - (1-y).*log(1-h))/m
 
 
 
