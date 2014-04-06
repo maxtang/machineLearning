@@ -17,10 +17,14 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+% get the cost and gradient w/o regularization
+[J, grad] = costFunction(theta, X, y);
 
-
-
-
+% we don't wanna penalize the intercept term for being to large
+% so we set theta(1)=0 before regularization
+theta(1)=0;
+J = J + sum(theta.^2)*lambda/(2*m);
+grad = grad + lambda*theta/m;
 
 % =============================================================
 
