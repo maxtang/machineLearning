@@ -37,12 +37,14 @@ grad = zeros(size(theta));
 %
 
 
+% compute hypothesis function
+h=sigmoid(X*theta);
 
-
-
-
-
-
+% we don't wanna penalize the intercept term for being to large
+% so we set theta(1)=0 before regularization
+theta(1)=0;
+J = sum(-y.*log(h) - (1-y).*log(1-h))/m + sum(theta.^2)*lambda/(2*m);
+grad= (X'*(h-y) + lambda*theta)/m;
 
 
 % =============================================================
