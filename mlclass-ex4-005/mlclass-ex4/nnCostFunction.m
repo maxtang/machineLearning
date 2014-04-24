@@ -103,46 +103,52 @@ end
 Theta2_grad	= Theta2_grad/m;
 Theta1_grad	= Theta1_grad/m;
 %
-% WHAT DO WE WANT?
-% WE WANT dCost/dTheta2 and dCost/dTheta1 for gradient descent
-%
-%
-% dCost/dTheta2 = dCost/dzL3 * dzL3/dTheta2
-%
-% 1st term
+% Have a read here:
 % http://ufldl.stanford.edu/wiki/index.php/Backpropagation_Algorithm
-% Cost	= 0.5*( h - y )^2
-%		= 0.5*( g(zL3) - y )^2	where g = 1/(1+e^-z) with dg/dz = g*(1-g)
-% this is the cost for one observation.  will need to divide by m for multiple
-% dCost/dzL3	= dCost/dg * dg/dzL3
-% 				= ( g - y ) * g*(1-g)
-%dCost_dzL3	= (h - y_recoded) .* h .* (ones(size(h,1), size(h,2)) - h)
-%fprintf('size of dCost_dzL3.\n');
-%size(dCost_dzL3)
 
-% 2nd term
-% zL3	= Theta2 * aL2
-% dzL3/dTheta2 = aL2
+% If you are wondering how we get those equations:
+
+% WHAT DO WE WANT?
+% WE WANT dJ/dTheta2 and dJ/dTheta1 for gradient descent
+% ie.  how much does the cost change as the theta (weights) change
+
+% J     = -y* log(h) - (1-y)* log (1-h)
+%     = (y-1)*log(1-h) - y*log(h)
+%     = (y-1)*log(1-g) - y*log(g)
+% where h = g = g(zL3) and zL3 = Theta2*aL2
 %
-% So, 
-% dCost/dTheta2	= dCost/dzL3 * dzL3/dTheta2
-% 				= (g-y)*g*(1-g) * aL2	where g = g(zL3) = h = aL3
+% dJ/dTheta2    = (dJ/dzL3) * dzL3/dTheta2
 %
+%     dJ/dzL3    = (dJ/dg) * dg/dzL3
+%         dJ/dg    = ((y-1)/(1-g))*(-1) - y/g
+%                 = (1-y)/(1-g) - y/g
+%         dg/dzL3    = g*(1-g)
+%     dJ/dzL3    = g*(1-y) - y*(1-g)
+%             = g- yg - y + yg
+%             = g-y
+%            
+%     dzL3/dTheta2    = aL2
 %
-% dCost/dTheta1 is a bit more tricky
-% dCost/dTheta1 = dCost/dzL2 * dzL2/dTheta1
+% dJ/dTheta2    = (dJ/dzL3) * dzL3/dTheta2
+%             = (g - y) * aL2
+
+
+%
+% dJ/dTheta1 is a bit more tricky
+% dJ/dTheta1 = dJ/dzL2 * dzL2/dTheta1
 %
 % 1st term
-% dCost/dzL2	= dCost/dzL3 * dzL3/dzL2
-% zL3	= Theta2 * aL2
-%		= Theta2 * g(zL2)
-% dzL3/dzL2	= dzL3/dg(zL2) * dg(zL2)/dzL2
-%			= Theta2 * g*(1-g)	where g = g(zL2)
-% dCost/dzL2	= dCost/dzL3 * dzL3/dzL2
-% 				= dCost/dzL3 * Theta2 * g*(1-g)
-% 				= [dCost/dzL3 * Theta2] * g'(zL2)
-% note that in [dCost/dzL3 * Theta2], dCost/dzL3 is the "error term" from next layer and we back propagate it by the means of Theta2 with the weighted average
-%
+% dJ/dzL2    = dJ/dzL3 * dzL3/dzL2
+% zL3    = Theta2 * aL2
+%        = Theta2 * g(zL2)
+% dzL3/dzL2    = dzL3/dg(zL2) * dg(zL2)/dzL2
+%            = Theta2 * g*(1-g)    where g = g(zL2)
+% dJ/dzL2    = dJ/dzL3 * dzL3/dzL2
+%             = dJ/dzL3 * Theta2 * g*(1-g)
+%             = [dJ/dzL3 * Theta2] * g'(zL2)
+% note that in [dJ/dzL3 * Theta2], dJ/dzL3 is the "error term" from next layer and we back propagate it by the means of Theta2 to get the weighted average
+% dJ/dTheta1     = dJ/dzL2 * dzL2/dTheta1
+%                 = [dJ/dzL3 * Theta2] * g'(zL2) * aL1
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
