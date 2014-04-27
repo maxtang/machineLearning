@@ -33,7 +33,7 @@ load ('ex5data1.mat');
 
 % m = Number of examples
 m = size(X, 1);
-
+#{
 % Plot training data
 plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 xlabel('Change in water level (x)');
@@ -96,7 +96,7 @@ hold off;
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-
+#}
 %% =========== Part 5: Learning Curve for Linear Regression =============
 %  Next, you should implement the learningCurve function. 
 %
@@ -121,7 +121,6 @@ fprintf('# Training Examples\tTrain Error\tCross Validation Error\n');
 for i = 1:m
     fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
 end
-
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
