@@ -24,7 +24,23 @@ sigma = 0.3;
 %
 
 
-
+plotData(X, y);
+err = size(yval, 1);
+candidates = [0.01 0.03 0.1 0.3 1 3 10 30];
+for c=1:size(candidates,2),
+	for s=1:size(candidates,2),
+		model= svmTrain(X, y, candidates(c), @(x1, x2) gaussianKernel(x1, x2, candidates(s)));
+		predictions = svmPredict(model, Xval);
+		visualizeBoundary(X, y, model);
+        e = mean(double(predictions ~= yval));
+		fprintf('C=%f	sigma=%f	prediction err=%f.\n', candidates(c), candidates(s), e);
+		if err > e,
+			err = e;
+			C = candidates(c);
+			sigma = candidates(s);
+		end		
+	end
+end
 
 
 
