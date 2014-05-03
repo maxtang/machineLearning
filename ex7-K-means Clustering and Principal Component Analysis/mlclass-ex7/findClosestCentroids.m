@@ -21,10 +21,12 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+dist = zeros(size(X,1), 0);
+for k=1:K,
+	dist = [dist, norm(bsxfun(@minus, X, centroids(k, :)), 2, "rows")];
+end
 
-
-
-
+[m, idx] = min(dist, [], 2);
 
 
 % =============================================================
