@@ -1,8 +1,0 @@
-1%20-%202%20-%20What%20is%20Machine%20Learning%3F%20%287%20min%29.mp4
-1%20-%203%20-%20Supervised%20Learning%20%2812%20min%29.mp4
-1%20-%204%20-%20Unsupervised%20Learning%20%2814%20min%29.mp4
-2%20-%201%20-%20Model%20Representation%20%288%20min%29.mp4
-2%20-%202%20-%20Cost%20Function%20%288%20min%29.mp4
-2%20-%203%20-%20Cost%20Function%20-%20Intuition%20I%20%2811%20min%29.mp4
-2%20-%204%20-%20Cost%20Function%20-%20Intuition%20II%20%289%20min%29.mp4
-2%20-%207%20-%20Gradient%20Descent%20For%20Linear%20Regression%20%2810%20min%29.mp4
