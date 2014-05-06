@@ -18,9 +18,7 @@ Z = zeros(size(X, 1), K);
 %                    projection_k = x' * U(:, k);
 %
 
-% expand U so that it can be used to in cross product with vectorization
-u = U(:,K) * ones(1, size(X, 1));
-Z = X * u;
+Z = X * U(:, 1:K);
 
 
 % =============================================================
