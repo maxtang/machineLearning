@@ -128,22 +128,38 @@ my_ratings = zeros(1682, 1);
 
 % Check the file movie_idx.txt for id of each movie in our dataset
 % For example, Toy Story (1995) has ID 1, so to rate it "4", you can set
-my_ratings(1) = 4;
+%my_ratings(1) = 4;
 
 % Or suppose did not enjoy Silence of the Lambs (1991), you can set
-my_ratings(98) = 2;
+my_ratings(98) = 4;
 
 % We have selected a few movies we liked / did not like and the ratings we
 % gave are as follows:
-my_ratings(7) = 3;
-my_ratings(12)= 5;
-my_ratings(54) = 4;
-my_ratings(64)= 5;
-my_ratings(66)= 3;
-my_ratings(69) = 5;
-my_ratings(183) = 4;
-my_ratings(226) = 5;
-my_ratings(355)= 5;
+my_ratings(11) = 5;
+my_ratings(1127)= 4;
+my_ratings(1129) = 4;
+my_ratings(820)= 4;
+my_ratings(684) = 4; % in the line of fire 
+my_ratings(576) = 4; %cliff hanger
+my_ratings(568) = 4; %speed
+my_ratings(431)= 4;
+my_ratings(393)= 4; %doubtfire
+my_ratings(402)= 4; %ghost
+my_ratings(405)= 4; %mission impossible
+my_ratings(313)= 4; %titanic
+my_ratings(257)= 3; %men in black
+my_ratings(234)= 4; %jaws
+my_ratings(237)= 4; %jerry mcguire
+my_ratings(250)= 4; %jerry mcguire
+my_ratings(195)= 4; %jerry mcguire
+my_ratings(195)= 4; %jerry mcguire
+my_ratings(183)= 4; %jerry mcguire
+my_ratings(144)= 4; %jerry mcguire
+my_ratings(121)= 3; %jerry mcguire
+my_ratings(82)= 4; %jerry mcguire
+my_ratings(68)= 4; %jerry mcguire
+my_ratings(69)= 4; %jerry mcguire
+my_ratings(7)= 4; %jerry mcguire
 
 fprintf('\n\nNew user ratings:\n');
 for i = 1:length(my_ratings)

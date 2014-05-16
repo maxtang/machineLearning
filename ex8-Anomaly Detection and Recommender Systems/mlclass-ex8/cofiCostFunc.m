@@ -41,14 +41,13 @@ Theta_grad = zeros(size(Theta));
 %
 
 Y = Y .* R;
+
 J = sum(sum((((X*Theta').* R - Y).^2) ))/2;
+% adding regularization term
+J = J + 0.5 * lambda * (sum(sum(Theta.^2)) + sum(sum(X.^2)));
 
-
-X_grad = ((X*Theta').* R - Y)*Theta;
-Theta_grad = ((X*Theta').* R - Y)'*X;
-
-
-
+X_grad = ((X*Theta').* R - Y)*Theta + lambda*X;
+Theta_grad = ((X*Theta').* R - Y)'*X + lambda*Theta;
 
 
 
