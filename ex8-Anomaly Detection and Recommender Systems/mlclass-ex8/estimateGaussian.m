@@ -22,11 +22,11 @@ sigma2 = zeros(n, 1);
 %
 
 
+mu = mean(X)';
 
 
-
-
-
+% sigma2 = sum(bsxfun(@minus,X, mean(X)).^2)'/m;
+sigma2 = var(X, 1)';
 
 
 
